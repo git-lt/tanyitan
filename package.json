@@ -1,0 +1,21 @@
+{
+  "name": "matterjs-tanyitan",
+  "version": "1.0.0",
+  "description": "微信弹一弹小游戏 ",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel serve index.html",
+    "build": "parcel build index.html --public-url / --no-source-maps",
+    "build-github": "parcel build index.html --public-url /wxgame-elastic/dist/ --no-source-maps"
+  },
+  "author": "cheneyxu",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
+    "parcel": "^1.12.4",
+    "poly-decomp": "^0.3.0"
+  }
+}
