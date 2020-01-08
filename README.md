@@ -2,7 +2,7 @@
 
 - 仿微信小游戏 最强弹一弹
 
-[截图](https://github.com/git-lt/tanyitan/blob/master/res/WX20200108-204258.png)
+![截图](https://s2.ax1x.com/2020/01/08/l2bjBD.png)
 
 ## 开始
 
