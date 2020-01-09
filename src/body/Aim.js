@@ -35,12 +35,6 @@ export class Aim {
     this.drawAim();
   }
 
-  // const isWorldSleeping = this.ballAppends.filter(v => v.isSleeping).length <= 2;
-  // if (isWorldSleeping && !this.isAiming && this.isShooting) {
-  //   this.isShooting = false;
-  //   this.drawAim();
-  // }
-
   initBalls() {
     const { Matter } = this.physics;
     const { Bodies, Common } = Matter;
@@ -48,7 +42,7 @@ export class Aim {
     for (let i = 0; i < this.ballAppendCount; i++) {
       const ball = Bodies.circle(Common.random(this.minX, this.maxX), -this.ballRadius / 2, this.ballRadius, {
         isStatic: false,
-        density: 0.04,
+        density: 0.045,
         friction: 0.05,
         frictionAir: 0.00001,
         restitution: 0.9,
@@ -124,8 +118,7 @@ export class Aim {
         const speed = { x: (this.x - this.baseBallX) / (this.y - this.baseBallY), y: 1 };
 
         const fixRate =
-          (Math.sqrt(Math.pow(speed.x, 2) + Math.pow(speed.y, 2)) /
-            Math.sqrt(Math.pow(canvas.width - 64, 2) + Math.pow(canvas.height, 2))) *
+          (Math.sqrt(Math.pow(speed.x, 2) + Math.pow(speed.y, 2)) / Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2))) *
           1000;
         Body.applyForce(ballAppend, ballAppend.position, {
           x: (speed.x / fixRate) * 0.7,

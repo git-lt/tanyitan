@@ -1,4 +1,4 @@
-import store from "./base/DataStore.js";
+// import store from "./base/DataStore.js";
 import { Block } from "./body/Block.js";
 import { Border } from "./body/Border.js";
 import { Aim } from "./body/Aim";
@@ -9,7 +9,6 @@ export class Director {
 
   spriteLoad() {
     this.sprite = new Map();
-    // this.sprite['score'] = new Score
   }
 
   spriteDirect(isReload) {}

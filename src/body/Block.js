@@ -15,8 +15,32 @@ export class Block {
     this.HPMax = 10;
     this.timer = 0;
     this.score = 0;
+    this.scoreBody = null;
 
     this.bindEvents();
+    this.createScoreBox();
+  }
+
+  createScoreBox() {
+    const { Matter, engine } = this.physics;
+    const { Bodies, World } = Matter;
+
+    this.scoreBody = Bodies.rectangle(80, 80, 90, 26, {
+      isSensor: true,
+      isStatic: true,
+      render: {
+        visible: true,
+        fillStyle: "transparent",
+        text: {
+          content: "得分：" + this.score,
+          color: "white",
+          size: 16,
+          family: "Arial"
+        }
+      }
+    });
+
+    World.add(engine.world, [this.scoreBody]);
   }
 
   draw() {
@@ -80,9 +104,9 @@ export class Block {
         y: block.position.y
       });
 
-      if (block.position.y < 90) {
-        window.alert("游戏结束，得分：" + this.score);
+      if (block.position.y < 60) {
         store.isGameOver = true;
+        window.alert("游戏结束");
         this.map = {};
         this.score = 0;
         Events.off(engine, "beforeUpdate");
@@ -117,6 +141,10 @@ export class Block {
       if (!hasNumberBox) return;
       let curr = p.bodyA.isNumber ? p.bodyA : p.bodyB;
       curr.hp--;
+      // 加 1 分
+      this.score++;
+      this.scoreBody.hp = this.score;
+      this.scoreBody.render.text.content = `得分：${this.score}`;
       engine.world.gravity.y = 1;
       curr.render.text.content = curr.hp;
 
@@ -128,9 +156,6 @@ export class Block {
       if (curr.hp <= 0) {
         Matter.World.remove(engine.world, curr);
         delete this.map[curr.id];
-        // 加 1 分
-        this.score++;
-        console.log("得分：" + this.score);
       }
     }
   };

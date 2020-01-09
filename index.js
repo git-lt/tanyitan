@@ -4,7 +4,7 @@ window.decomp = decomp;
 const Matter = require("./src/base/matter.js");
 const { Engine, Render } = Matter;
 import { App } from "./App.js";
-import bgImg from "./res/background.png";
+// import bgImg from "./res/background.png";
 
 const canvasW = 375;
 const canvasH = 667;
